@@ -21,6 +21,11 @@ function App() {
   const [isEdit, setIsEdit] = useState(false);//수정상태관리
   const [editIndex, setEditIndex] = useState();//여러개의 인덱스 중 수정/선택하고자하는 index상태관리
   const [tempInput, setTempInput] = useState(""); //수정중 임시 입력값 상태관리.
+  const [checkTodos, setCheckTodos] = useState([]);//여러개기 때문에 배열로 인덱스가 들어가야함.(선택된 목록을 옮겨야야)
+
+
+
+
 
 
   function inputTodoChange(e){
@@ -56,6 +61,22 @@ function App() {
     
     
   }
+ 
+  function clickCheckbox(todoIndex){
+    const findIndex = checkTodos.indexOf(todoIndex);
+    if(findIndex === -1) {
+      const copyCheckedTodos = [...checkTodos, todoIndex];
+      setCheckTodos(copyCheckedTodos);
+      
+    } else{
+      const copyCheckedTodos = [...checkTodos];
+      copyCheckedTodos.splice(findIndex, 1);
+      setCheckTodos(copyCheckedTodos);
+    }
+    
+  }
+
+  console.log(checkTodos)
 
 
 
@@ -66,6 +87,7 @@ function App() {
       <div className="todo-header" style={{color:"#2F4157"}}>🧶오늘의 할일🧶</div>
 
       <div style={{marginBottom: "10px", display: 'flex', flexDirection: 'row'}}>
+        
           <input
             type="text"
             className="todo-input"
@@ -75,18 +97,23 @@ function App() {
             onChange={inputTodoChange}
           />
         </div>
-          <button className="add-btn" onClick={addTodo}>추가하기</button>
-        
+          <button className="add-btn" style={{marginBottom: 10}} onClick={addTodo}>추가하기</button>
+          <button className="select-delete-btn" onClick={addTodo}>선택 삭제</button>
+
 
      
       <ul className="todo-list" id="todo-list">
        {todos.map((todo,index)=> (
           <li key={index} className="todo-item">
+            <input
+              type="checkbox"
+              onClick={()=>clickCheckbox(index)}
+            />
             { isEdit && editIndex === index ? 
             <input
               type="text"
               value={tempInput} 
-              onChange={(e)=>setTempInput(e.target.value)}//setInput에 있는 값을 전달 받는것?
+              onChange={(e)=>setTempInput(e.target.value)}
               />
             :
             <span>{todo}</span>
@@ -95,7 +122,7 @@ function App() {
             { isEdit && editIndex === index ?
              <button className="update-btn" onClick={doneTodo}>완료</button>
              : 
-            //  빈괄호는 언제언제 쓰는가  ? 
+            
              <>
              <button className="update-btn" onClick={()=> editTodo(index)}>수정</button>
              <button className="delete-btn" onClick={()=>deleteTodo(index)}>삭제</button>
