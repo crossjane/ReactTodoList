@@ -3,8 +3,13 @@ import './App.css';
 
 
 function AppV2() {
+  //필요한 상태 check 
+  //1.input field창 관리 
+  //2.추가된 todo목록 관리 
+  //3.
+ function add (){
 
- 
+ }
 
 
 
@@ -23,7 +28,7 @@ function AppV2() {
            
           />
         </div>
-          <button className="add-btn" style={{marginBottom: 10}}>추가하기</button>
+          <button className="add-btn" style={{marginBottom: 10}} onClick={add}>추가하기</button>
           <button className="select-delete-btn">선택 삭제</button>
 
 
