@@ -88,12 +88,8 @@ function App() {
     }else{
       copyTodos[index].isChecked=true;
     }
-
     setTodos(copyTodos)
-
   }
-    
-  
 
 
    // 체크박스 삭제기능 
@@ -102,7 +98,6 @@ function App() {
     const deletedTodos = todos.filter((todo) => !todo.isChecked)
     setTodos(deletedTodos);
 
-  
   }
  
  
@@ -127,7 +122,7 @@ function App() {
           />
         </div>
           <button className="add-btn" style={{marginBottom: 10}} onClick={addTodo}>추가하기</button>
-          <button className="select-delete-btn" onClick={clickDelete}>선택 삭제</button>
+          <button className="select-delete-btn" onClick={clickDelete}>삭제</button>
 
 
      

@@ -94,7 +94,7 @@ body {
 
 .delete-btn {
   background-color: #F4EFEB;
-  color: #64828F;
+  color: #2d5b6e;
   border: 1px solid #E9E3DF;
   border-radius: 5px;
   margin-left: 10px;
@@ -115,7 +115,7 @@ body {
 .select-delete-btn {
   width: 100%;
   padding: 10px;
-  background-color: green;
+  background-color: #335e70;
   color: white;
   border: none;
   border-radius: 5px;

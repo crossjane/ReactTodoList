@@ -41,8 +41,30 @@ function AppV2() {
 
   }
 
-  function tempInputChange(e){
-    setInputTodo(e.target.value);
+  function done(index){
+    //클릭 시, 입력된 temp의 값이 todo로 저장이 되어야 하고 . isEdit => false로 변경
+    const copyTodos = [...todos];
+    copyTodos[index].isEdit = false;
+    copyTodos[index].value = copyTodos[index].tempInput;
+    setTodos(copyTodos);
+    
+  }
+
+  function tempInputChange(e, index){
+    const copyTodos = [...todos];
+    copyTodos[index].tempInput = e.target.value;
+    setTodos(copyTodos);
+
+  }
+
+  function checkboxClick(index){
+
+    //클릭했을때, 안했을때를 나누어 설정해 주어야함 : 클릭 했다가 안했다가 반복 가능하기 때문에.
+    const copyTodos = [...todos];
+    copyTodos[index].isChecked = true;
+
+    setTodos(copyTodos);
+
   }
 
 
@@ -74,27 +96,27 @@ function AppV2() {
           <li key={index} className="todo-item">
             <input
               type='checkbox'
-              value={todos.tempInput}
-              onChange={tempInputChange}
+              checked={todo.isChecked}
+              onClick={()=>checkboxClick(index)}
             />
           
 
-            {todos.isEdit?      
+            {todo.isEdit?      
               <input
               type="text"
-              
+              value={todo.tempInput}
+              onChange={(e)=>tempInputChange(e,index)}
               />
 
               :
               <span>{todo.value}</span>
             }
 
-           {todos.isEdit?      
-            
-            <button className="update-btn">완료</button>
+           {todo.isEdit?      
+            <button className="update-btn" onClick={()=>done(index)}>완료</button>
             :
             <>
-            <button className="update-btn" onClick={edit} >수정</button>
+            <button className="update-btn" onClick={()=>edit(index)} >수정</button>
             <button className="delete-btn">삭제</button>
             </>
             }
