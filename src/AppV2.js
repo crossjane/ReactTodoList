@@ -60,12 +60,31 @@ function AppV2() {
   function checkboxClick(index){
 
     //클릭했을때, 안했을때를 나누어 설정해 주어야함 : 클릭 했다가 안했다가 반복 가능하기 때문에.
+    //클릭 했을때는 체크 되도록 안되도륵... 
     const copyTodos = [...todos];
-    copyTodos[index].isChecked = true;
 
+    if(copyTodos[index].isChecked === true){
+      copyTodos[index].isChecked = false;
+    } else {
+      copyTodos[index].isChecked = true
+
+    }
+    
     setTodos(copyTodos);
 
   }
+
+  function checkboxDelete(){
+
+    //선택 삭제를 눌렀을때, 체크된 index들의 todos목록이 사라져야 한다. 나머지만 return 되어야 한다. 
+    //그러려면 index를 받아오기 .=> index를 받아올 필요 없다. 
+    //왜? isChecked가 false인 경우만 filtering 하여 return 하면 되기 때문에 
+
+    const deletedTodos = todos.filter((todo)=> !todo.isChecked);
+    setTodos(deletedTodos);
+
+    }
+
 
 
 
@@ -87,7 +106,7 @@ function AppV2() {
           />
         </div>
           <button className="add-btn" style={{marginBottom: 10}} onClick={add}>추가하기</button>
-          <button className="select-delete-btn">선택 삭제</button>
+          <button className="select-delete-btn" onClick={checkboxDelete}>선택 삭제</button>
 
 
      
