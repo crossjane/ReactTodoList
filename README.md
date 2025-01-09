@@ -1,70 +1,26 @@
-# Getting Started with Create React App
+##프로젝트 목표
+1. React 작동 원리 습득
+순수 자바스크립트로 작성한 Todo List를 React로 리팩토링하며, React의 작동 원리와 상태 관리 방식을 실질적으로 익히고자 하였습니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+2. 반복 학습을 통한 이해 심화
+코드를 반복적으로 작성하고 수정하며, 개념을 단순히 이해하는 데 그치지 않고 완전히 제 것으로 만들기 위해 노력하였습니다.
 
-## Available Scripts
+3. 다양한 접근 방식을 비교 및 분석
+같은 기능을 여러 방식으로 구현하며, 각 방식의 차이점을 직접적으로 이해하고 활용도를 높이고자 하였습니다.
+---
 
-In the project directory, you can run:
+구현 방식 비교
+App.js
+단순 문자열 배열로 관리하며 상태를 여러 개로 분리한 방식으로 작업하였습니다.
 
-### `npm start`
+- 장점: 각 상태를 독립적으로 관리할 수 있어 단순한 기능 구현에 적합합니다.
+- 단점: 상태가 많아지면 관리 복잡도가 높아질 수 있다는 점을 확인하였습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+AppV2.js
+배열에 각 항목의 상태를 객체로 포함시켜 통합 관리하는 방식으로 작업하였습니다.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 장점: 가독성과 유지 보수성이 크게 향상되며, 코드가 더 직관적입니다.
+- 단점: 단순한 상황에서는 불필요한 복잡성을 초래할 수 있습니다.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+결론
+이번 프로젝트를 통해 React에서 상태 관리의 중요성과 다양한 설계 방식의 장단점을 체험할 수 있었습니다. 특히, 상황에 따라 상태를 독립적으로 관리하거나, 통합적으로 관리하는 방식을 선택해야 함을 깨달았습니다. 앞으로도 이런 경험을 바탕으로 상황에 맞는 적합한 구조를 설계할 수 있도록 노력하겠습니다.
