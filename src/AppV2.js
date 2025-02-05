@@ -1,8 +1,13 @@
 import { useState } from 'react';
 import './App.css';
+import { useEffect } from 'react';
 
 
 function AppV2() {
+
+  useEffect(() => {
+    console.log("ddd")
+  }, [])
   //객체로 정리해보기 . 
 
   //필요한 상태 check 
@@ -85,6 +90,21 @@ function AppV2() {
 
     }
 
+    function deleteTodo(index){
+      //splice는 안돌아도된다. filer는 반복해서 돌아서 비효율적. 찾아야될때 쓰기.
+     
+      // const deleteTodos = todos.filter((_,todoIndex)=> {
+      //   return todoIndex !== index;
+      // });
+
+      // console.log(deleteTodos)
+      // setTodos(deleteTodos);
+
+      const copyTodos = [...todos];
+      copyTodos.splice(index,1);
+      setTodos(copyTodos);
+    }
+
 
 
 
@@ -101,8 +121,7 @@ function AppV2() {
             id="todoInput"
             placeholder="할 일을 입력하세요"   
             value={inputTodo}
-            onChange={inputTodoChange}
-           
+            onChange={inputTodoChange}  
           />
         </div>
           <button className="add-btn" style={{marginBottom: 10}} onClick={add}>추가하기</button>
@@ -136,7 +155,7 @@ function AppV2() {
             :
             <>
             <button className="update-btn" onClick={()=>edit(index)} >수정</button>
-            <button className="delete-btn">삭제</button>
+            <button className="delete-btn" onClick={()=>deleteTodo(index)}>삭제</button>
             </>
             }
               </li>

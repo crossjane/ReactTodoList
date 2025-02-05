@@ -123,6 +123,8 @@ body {
   font-size: 1rem;
 }
 
-
+.select-delete-btn:hover{
+  background-color: #204f64;
+}
 
 
