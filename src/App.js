@@ -21,9 +21,8 @@
 //   const [isEdit, setIsEdit] = useState(false);//수정상태관리
 //   const [editIndex, setEditIndex] = useState();//여러개의 인덱스 중 수정/선택하고자하는 index상태관리
 //   const [tempInput, setTempInput] = useState(""); //수정중 임시 입력값 상태관리.
-//   const [checkTodos, setCheckTodos] = useState([]);// 근데 배열로 해야됨. why? 여러개를 넣어야 하니까..
- 
-
+//   const [checkTodos, setCheckTodos] = useState([]);//여러개기 때문에 배열로 인덱스가 들어가야함.(선택된 목록을 옮겨야야)
+  
 
 //   function inputTodoChange(e){
 //     setInputTodo(e.target.value);
@@ -56,75 +55,20 @@
 //     setTodos(deletedTodo);
 
 //   }
-
-//   //체크박스를 ui를 input으로 만든다. 
-//   //어떤 박스가 체크 되었는지 안되었는지 확인해야함.  -> 임의의 check 된 todos상태를 만들어준다. checkTodos
-//   //체크가 된 박스는 삭제가 되어 todos에서 제거가 되어야 하고 
-//   //체크가 안된 박스는 그대로 두어야 한다. 
-//   //indexOf  => 특정 문자열을 찾고, 검색된 문자열이 첫번째로 나타나는 위치를 return 
-//   // 찾는 문자열이 없으면 -1를 return 
-//   //
-
-//   function clickCheckBox(index){
-//     //클릭된 체크박스를 인지하는 함수. 저장하는 함수 x 체크박스가 클릭됐을때 일어나는 일을 
-//     //나타내는 함수.
-
-//     //checkTodos(check된것의 여부 상태)와 todos(실제 목록의 todos) 구분하기. 
-//     //여기서는 박스가 체크되었으면 먼저 checkTodos에 넣어두고 
-//     //마지막에 checked된 것을 넣어 두어야 된다 .
-//     const findIndex = checkTodos.indexOf(index); 
-//     if(findIndex === -1){
-//       // -1이 아니라면 . 박스킄 체크되어서 들어가야함/그렇다면... 
-//       //findeIndex에는 들어간 index의 값이 .들어간다. 그러면 그값을 checkTodos에 넣어둔다. 
-//       //근데 checkTodos는 배열이다. 왜? 여러개 선택할 수 있어야 하니까. 
-//       const copyCheckedTodos = [...checkTodos, findIndex];
+ 
+//   function clickCheckbox(todoIndex){
+//     const findIndex = checkTodos.indexOf(todoIndex);
+//     if(findIndex === -1) {
+//       const copyCheckedTodos = [...checkTodos, todoIndex];
 //       setCheckTodos(copyCheckedTodos);
-
-//       //checkTodos는 index값이 아님/.. ?? checked된 내용? 
-
-//     } else {
-//       //체크박스가 해제된 경우, 이미 체크된 목록인 checkTodos에서 해당 항목을 뺴줘야함. 
-//       //그 위치(findINdex)를 찾아서 splice로 제거 findIndex에 해당하는 하나 1번째 index것을 뺴줘야함.
-//       const copyCheckedTodos = [...checkTodos]; //얕은 복사를 해주고
-//       copyCheckedTodos.splice(findIndex,1);//그 check된 것중에 , findIndex(선택한 것중에 todo에 있는 값.)
+      
+//     } else{
+//       const copyCheckedTodos = [...checkTodos];
+//       copyCheckedTodos.splice(findIndex, 1);
 //       setCheckTodos(copyCheckedTodos);
-
 //     }
     
 //   }
-
-//   // 체크박스 삭제기능 
-//   function clickDelete(){
-//     console.log("!1111");
-//     //checkTodos에 있는 목록과 매치시켜서 todos에서 같은 것을 삭제 한다. 
-//     //여기서 왜 todos만 얕은 복사...? checkTodos는 왜 ?  여기서 checkTodos는 값이 아니고 인덱스 인데 어떻게 이중포문? 
-  
-//     let updatedTodos = [...todos];
-
-//     for(let i = 0; i < checkTodos.length; i++){
-//       for(let j = 0; j < updatedTodos.length; j++){
-//         //checkTodos에 저장된 index와 일치하는 updated의 항목삭제 
-//         if(){
-//           s
-
-//         }
-//       }
-//     }
-//     setTodos(updatedTodos);
-//     setCheckTodos([]);
-//   }
- 
-// //   function clickCheckBox(index) {
-// //     if (!checkTodos.includes(index)) {
-// //         // 체크박스 선택
-// //         setCheckTodos([...checkTodos, index]);
-// //     } else {
-// //         // 체크박스 해제
-// //         setCheckTodos(checkTodos.filter((i) => i !== index));
-// //     }
-// // }
- 
- 
 
 
 //   return (
@@ -144,7 +88,7 @@
 //           />
 //         </div>
 //           <button className="add-btn" style={{marginBottom: 10}} onClick={addTodo}>추가하기</button>
-//           <button className="select-delete-btn" onClick={clickDelete}>선택 삭제</button>
+//           <button className="select-delete-btn" onClick={addTodo}>선택 삭제</button>
 
 
      
@@ -152,10 +96,9 @@
 //        {todos.map((todo,index)=> (
 //           <li key={index} className="todo-item">
 //             <input
-//               type="checkbox"    
-//               onClick={()=>clickCheckBox(index)}
+//               type="checkbox"
+//               onClick={()=>clickCheckbox(index)}
 //             />
-           
 //             { isEdit && editIndex === index ? 
 //             <input
 //               type="text"
