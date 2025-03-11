@@ -15,7 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "prod-start": "export PORT=4000 && react-scripts start",
-    "pm2-prod": "npx pm2 start 'npm run prod-start' --name todolist",
+    "pm2-prod": "npx pm2 start 'npm run serve-prod' --name todolist",
     "serve-prod":"npx serve -l 4000 -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
